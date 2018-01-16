@@ -37,6 +37,22 @@
     "password": {
       "type": "securestring",
       "defaultValue": ""
+    },
+    "Clone_a_git_repository_GitRepoURI": {
+      "type": "string",
+      "defaultValue": "https://github.com/azugfr/functions-customer-reviews.git"
+    },
+    "Clone_a_git_repository_Destination": {
+      "type": "string",
+      "defaultValue": "C:\\Repos"
+    },
+    "Clone_a_git_repository_Branch": {
+      "type": "string",
+      "defaultValue": "master"
+    },
+    "Clone_a_git_repository_PersonalAccessToken": {
+      "type": "securestring",
+      "defaultValue": ""
     }
   },
   "variables": {
@@ -77,7 +93,25 @@
             "artifactId": "[resourceId('Microsoft.DevTestLab/labs/artifactSources/artifacts', parameters('labName'), 'public repo', 'windows-firefox')]"
           },
           {
-            "artifactId": "[resourceId('Microsoft.DevTestLab/labs/artifactSources/artifacts', parameters('labName'), 'public repo', 'windows-git')]"
+            "artifactId": "[resourceId('Microsoft.DevTestLab/labs/artifactSources/artifacts', parameters('labName'), 'public repo', 'windows-clone-git-repo')]",
+            "parameters": [
+              {
+                "name": "GitRepoURI",
+                "value": "[parameters('Clone_a_git_repository_GitRepoURI')]"
+              },
+              {
+                "name": "Destination",
+                "value": "[parameters('Clone_a_git_repository_Destination')]"
+              },
+              {
+                "name": "Branch",
+                "value": "[parameters('Clone_a_git_repository_Branch')]"
+              },
+              {
+                "name": "PersonalAccessToken",
+                "value": "[parameters('Clone_a_git_repository_PersonalAccessToken')]"
+              }
+            ]
           },
           {
             "artifactId": "[resourceId('Microsoft.DevTestLab/labs/artifactSources/artifacts', parameters('labName'), 'public repo', 'windows-vscode')]"
