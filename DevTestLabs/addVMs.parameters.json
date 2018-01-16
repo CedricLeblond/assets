@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "newVMName": {
+          "value": "redhol-rm3-vm"
+        },
+        "labName": {
+         "value": "redhol-labs"
+        },
+        "labVirtualNetworkName": {
+            "value": "redhol-labs-net"
+          },
+        "labSubnetName": {
+            "value": "redhol-labs-netSubnet"
+          },
+        "size": {
+          "value": "Standard_D2s_v3"
+        },
+        "userName": {
+          "value": "redholuser"
+        },
+        "expirationDate": {
+          "value": "2018-01-23T23:00:00.000Z"
+        },
+        "password": {
+          "value": "C5i72x0rbA666Roh"
+        }
+      }
+}
