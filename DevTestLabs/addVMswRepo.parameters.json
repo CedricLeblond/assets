@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "newVMName": {
-          "value": "redhol-rm3-vm"
+          "value": "redhol-arm-vm"
         },
         "labName": {
          "value": "redhol-labs"
