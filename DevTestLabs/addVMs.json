@@ -18,6 +18,10 @@
         "type": "string",
         "defaultValue": "redhol-labs-netSubnet"
       },
+    "vmCount": {
+      "type": "int",
+      "defaultValue": 1
+    },
     "size": {
       "type": "string",
       "defaultValue": "Standard_D2s_v3"
@@ -65,7 +69,7 @@
       "location": "[resourceGroup().location]",
       "copy": {
         "name": "[parameters('newVMName')]",
-        "count": 2
+        "count": "[parameters('vmCount')]"
       },
       "properties": {
         "labVirtualNetworkId": "[variables('labVirtualNetworkId')]",
