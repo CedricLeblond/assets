@@ -2,9 +2,9 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "newVMName": {
+    "newVMPrefix": {
       "type": "string",
-      "defaultValue": "redhol-arm-vm"
+      "defaultValue": "redhol-srv-vm"
     },
     "labName": {
       "type": "string",
@@ -32,7 +32,7 @@
     },
     "expirationDate": {
       "type": "string",
-      "defaultValue": "2018-01-23T23:00:00.000Z"
+      "defaultValue": "2019-01-23T23:00:00.000Z"
     },
     "password": {
       "type": "securestring",
@@ -43,7 +43,7 @@
     "labSubnetName": "[parameters('labSubnetName')]",
     "labVirtualNetworkId": "[resourceId('Microsoft.DevTestLab/labs/virtualnetworks', parameters('labName'), variables('labVirtualNetworkName'))]",
     "labVirtualNetworkName": "[parameters('labVirtualNetworkName')]",
-    "vmName": "[concat(parameters('labName'), '/', parameters('newVMName'))]"
+    "vmName": "[concat(parameters('labName'), '/', parameters('newVMPrefix'))]"
   },
   "resources": [
     {
@@ -52,7 +52,7 @@
       "name": "[concat(variables('vmName'), padLeft(copyIndex(), 2, '0'))]",
       "location": "[resourceGroup().location]",
       "copy": {
-        "name": "[parameters('newVMName')]",
+        "name": "[parameters('newVMPrefix')]",
         "count": "[parameters('vmCount')]"
       },
       "properties": {
@@ -92,7 +92,7 @@
           "sharedPublicIpAddressConfiguration": {
             "inboundNatRules": [
               {
-                "transportProtocol": "tcp",
+                "transportProtocol": "Tcp",
                 "backendPort": 3389
               }
             ]

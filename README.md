@@ -10,15 +10,15 @@ A set of ARM deployment templates and parameters for Azure Dev Test Lab dev VM p
     * Chrome
     * Firefox
     * Git for Windows
-*  addVMswRepo.json : (+ parameters) : add 1 (or more) VMs in the provisioned DevTest Lab, including a particular GIT repo for HOL Serverless (https://github.com/azugfr/functions-customer-reviews)
 *  Provision.ps1 : a very simple set of PS commands for deploying the templates
+*  DeleteLabVMs.ps1 : utility script for deleting one VM or a set of VMs in a lab.
 
-For simplicity, the template doesn't use KeyVault secret for the VM password at this stage.
+For simplicity, the template JSON doesn't use KeyVault secret for the VM password at this stage.
 
 Tips and remarks:
 * Always deploy in the same resource group as the DevTest Lab (otherwise, the DevTest Lab parent resource won't be found). There is no workaround of this limitation at this time 
 * You may want to update the expirationDate for the VM provisioning to the date you plan to automatically remove the VM
-* Also, you may want to change the default password for the VMs
+* Also, you may want to change the default user and password values for the VMs
 
 
 
